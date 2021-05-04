@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)"></ion-searchbar> -->
+  <!--  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged()"></ion-searchbar> -->
+  <ion-card *ngFor="let item of results">
+    <ion-card-content
+      ><ion-img [src]="item.image_front_thumb_url"></ion-img>
+    </ion-card-content>
+
+    <ion-card-header
+      ><ion-card-title>{{item.product_name?item.product_name:item.product_name_fr}}</ion-card-title></ion-card-header
+    >
+  </ion-card>
+</ion-content>

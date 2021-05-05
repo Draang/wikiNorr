@@ -1,0 +1,7 @@
+{
+  "name": "norriture",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

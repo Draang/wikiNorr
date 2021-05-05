@@ -8,18 +8,22 @@ import { map, tap, catchError } from 'rxjs/operators';
 })
 export class ProductService {
   url = 'https://fr.openfoodfacts.org/';
+  //https://world.openfoodfacts.org/cgi/search.pl?search_terms=&search_simple=1&json=1
+  //https://fr.openfoodfacts.org/search.pl?search.pl?search_terms=&json=1&page=1
   constructor(private http: HttpClient) {}
 
-  getDataProd(): Observable<any> {
-    return this.http.get(
-      `${this.url}cgi/search.pl?action=process&tagtype_0=categories&tag_contains_0=contains&tagtype_1=nutrition_grades&json=true`
-    );
-  }
-  getSearch(categorie: string): Observable<any> {
-    return this.http
-      .get(
-        `${this.url}cgi/search.pl?action=process&tagtype_0=categories&tag_contains_0=contains&tag_0=${categorie.replace(/\s/g,"-")}&json=true`
-      )
-     
+  getDataProd(categorie: string = '', page: number = 1): Observable<any> {
+    if (categorie === '') {
+      return this.http.get(
+        `${this.url}cgi/search.pl?search_terms=&search_simple=1&json=1&page=${page}`
+      );
+    } else {
+      return this.http.get(
+        `${this.url}cgi/search.pl?search_terms=${categorie.replace(
+          /\s/g,
+          '+'
+        )}&search_simple=1&json=1&page=${page}`
+      );
+    }
   }
 }

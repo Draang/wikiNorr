@@ -10,7 +10,23 @@
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
+            
           </ion-menu-toggle>
+        
+          <ion-menu-toggle auto-hide="false" >
+            <ion-item routerDirection="root" [routerLink]="['/register']" lines="none" detail="false" routerLinkActive="selected">
+              <ion-label>Register</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          
+
+        <span>Already a user?</span>
+        
+        <ion-menu-toggle auto-hide="false" >
+          <ion-item routerDirection="root" [routerLink]="['/login']" lines="none" detail="false" routerLinkActive="selected">
+            <ion-label>Login</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
         </ion-list>
 
       

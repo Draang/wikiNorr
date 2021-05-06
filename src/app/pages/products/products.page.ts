@@ -15,7 +15,7 @@ export class ProductsPage implements OnInit {
     public productService: ProductService
   ) {
     if(this.aRouter.snapshot.paramMap.get('marque')!=null){
-      this.searchTerm=this.aRouter.snapshot.paramMap.get('marque')
+      this.searchTerm=this.aRouter.snapshot.paramMap.get('marque').replace(/-/g,' ');
     }
     
   }

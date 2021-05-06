@@ -9,6 +9,6 @@ export class BrandsService {
 url='https://fr.openfoodfacts.org/brands.json'
   constructor(private http:HttpClient) { }
   getBrands():Observable<any>{
-    return this.http.get(this.url);
+    return this.http.get(this.url)
   }
 }

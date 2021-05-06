@@ -15,8 +15,7 @@ export class MarquesPage implements OnInit {
   }
   getBrands() {
     this.brandsService.getBrands().subscribe((r) => {
-      console.log(r['tags']);
-      this.result = r['tags'].slice(20);
+      this.result = r['tags'].slice(0, 50);
     });
   }
 }

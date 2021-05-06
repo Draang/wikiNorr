@@ -5,26 +5,40 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'products',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'products',
-    loadChildren: () => import('./pages/products/products.module').then( m => m.ProductsPageModule)
+    loadChildren: () =>
+      import('./pages/products/products.module').then(
+        (m) => m.ProductsPageModule
+      ),
   },
   {
     path: 'product/:id',
-    loadChildren: () => import('./pages/product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
+    loadChildren: () =>
+      import('./pages/product-detail/product-detail.module').then(
+        (m) => m.ProductDetailPageModule
+      ),
+  },
+  {
+    path: 'product/:marque',
+    loadChildren: () =>
+    import('./pages/products/products.module').then(
+      (m) => m.ProductsPageModule
+    ),
   },
   {
     path: 'marques',
-    loadChildren: () => import('./pages/marques/marques.module').then( m => m.MarquesPageModule)
-  }
+    loadChildren: () =>
+      import('./pages/marques/marques.module').then((m) => m.MarquesPageModule),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

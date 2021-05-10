@@ -45,6 +45,14 @@ const routes: Routes = [
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
+  {
+    path: 'specificsearch',
+    loadChildren: () => import('./pages/specificsearch/specificsearch.module').then( m => m.SpecificsearchPageModule)
+  },
+  {
+    path: 'verify-email',
+    loadChildren: () => import('./pages/verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
+  },
 ];
 
 @NgModule({

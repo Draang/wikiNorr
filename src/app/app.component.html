@@ -12,7 +12,7 @@
             </ion-item>
             
           </ion-menu-toggle>
-        
+        <ion-item >
           <ion-menu-toggle auto-hide="false" >
             <ion-item routerDirection="root" [routerLink]="['/register']" lines="none" detail="false" routerLinkActive="selected">
               <ion-label>Register</ion-label>
@@ -27,6 +27,14 @@
             <ion-label>Login</ion-label>
           </ion-item>
         </ion-menu-toggle>
+      </ion-item>
+      <ion-item >
+        <ion-menu-toggle auto-hide="false" >
+          <ion-item >
+            <ion-label (click)="auth.SignOut()">Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-item>
         </ion-list>
 
       

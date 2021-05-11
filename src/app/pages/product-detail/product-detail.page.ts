@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDescriptionService } from 'src/app/services/product-description.service';
 
 @Component({
@@ -9,21 +10,38 @@ import { ProductDescriptionService } from 'src/app/services/product-description.
 export class ProductDetailPage implements OnInit {
   public product: any;
   public images: string[] = [];
+  public isValid: boolean = false;
+  public productCode: string;
 
-  constructor(public productDescriptionService: ProductDescriptionService) {}
+  constructor(
+    public productDescriptionService: ProductDescriptionService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getProductDescription();
   }
 
   getProductDescription() {
-    let productCode: string = '3033710065066'; // ProductCode of Nesquik 250g
+    // get Product Code
+    // sets the code (just in case)
+    this.productCode = this.route.snapshot.paramMap.get('id');
+    let productCode: string = window.location.pathname.replace(
+      '/products/',
+      ''
+    );
+    // let productCode: string = '3033710065066'; // ProductCode of Nesquik 250g
 
+    // suscribe to API
     this.productDescriptionService
       .getProductDescriptionById(productCode)
       .subscribe((data) => {
+        // checks for product existance
+        if (data.product) this.isValid = true;
+        // sets the data recieved from API
         this.product = data.product;
-        // images from data
+        // get image according to product.nutriscore_grade
         switch (this.product.nutriscore_grade) {
           case 'a':
             this.images[0] =
@@ -49,8 +67,11 @@ export class ProductDetailPage implements OnInit {
           default:
             break;
         }
-        console.log(this.images);
         console.log(this.product);
       });
+  }
+
+  redirectToEdit() {
+    this.router.navigateByUrl('product-edit/' + this.productCode);
   }
 }

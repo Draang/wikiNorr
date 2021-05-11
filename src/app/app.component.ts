@@ -12,7 +12,7 @@ export class AppComponent {
 
   public appPages = [
     { title: 'Products', url: '/products', icon: 'fast-food' },
-    { title: 'Marques', url: '/marques', icon: 'mail' },
+    { title: 'Marques', url: '/marques', icon: 'pricetags' },
   ];
   constructor(public auth: AuthService) {}
   getFlag() {

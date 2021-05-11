@@ -8,7 +8,11 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  constructor(public authService: AuthService, public router: Router) {}
+  constructor(public authService: AuthService, public router: Router) {
+    if (JSON.parse(localStorage.getItem('user')) != null) {
+      this.router.navigate(['/products']);
+    }
+  }
 
   ngOnInit() {}
   logIn(email, password) {

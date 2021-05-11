@@ -7,16 +7,22 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  user:any=JSON.parse(localStorage.getItem('user'));
+  user: string = '';
   flag: boolean = false;
+
   public appPages = [
     { title: 'Products', url: '/products', icon: 'fast-food' },
     { title: 'Marques', url: '/marques', icon: 'mail' },
   ];
-  constructor(public auth: AuthService) {
-    if (JSON.parse(localStorage.getItem('user'))) {
+  constructor(public auth: AuthService) {}
+  getFlag() {
+    if (JSON.parse(localStorage.getItem('user')) != null) {
       this.user = JSON.parse(localStorage.getItem('user')).email;
+      return false;
+    } else if (JSON.parse(localStorage.getItem('user')) == null) {
       
-    } 
+      
+      return true;
+    }
   }
 }

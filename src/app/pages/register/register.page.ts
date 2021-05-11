@@ -8,7 +8,13 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  constructor(public authService: AuthService, public router: Router) {}
+  constructor(public authService: AuthService, public router: Router) {
+  
+    if (JSON.parse(localStorage.getItem('user')) != null) {
+      
+      this.router.navigate(['/products']);
+    }
+  }
 
   ngOnInit() {}
   signUp(email, password) {

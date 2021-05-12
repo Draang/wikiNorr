@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,8 +13,9 @@ import { ProductEditPage } from './product-edit.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProductEditPageRoutingModule
+    ProductEditPageRoutingModule,
+    ReactiveFormsModule,
   ],
-  declarations: [ProductEditPage]
+  declarations: [ProductEditPage],
 })
 export class ProductEditPageModule {}

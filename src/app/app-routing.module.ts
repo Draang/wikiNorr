@@ -28,6 +28,13 @@ const routes: Routes = [
         (m) => m.ProductEditPageModule
       ),
   },
+  {
+    path: 'view-editions',
+    loadChildren: () =>
+      import('./pages/view-editions/view-editions.module').then(
+        (m) => m.ViewEditionsPageModule
+      ),
+  },
 ];
 
 @NgModule({

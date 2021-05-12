@@ -1,6 +1,5 @@
 <ion-header>
   <ion-toolbar>
-   
     <ion-title>products</ion-title>
   </ion-toolbar>
   <ion-searchbar
@@ -12,7 +11,7 @@
 <ion-content>
   <!--  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged()"></ion-searchbar> -->
 
-  <ion-card *ngFor="let item of results">
+  <ion-card *ngFor="let item of results" href="/product/{{item.code}}">
     <ion-card-content
       ><ion-avatar slot="start"
         ><ion-img [src]="item.image_front_thumb_url"></ion-img
@@ -25,10 +24,7 @@
       ></ion-card-header
     >
   </ion-card>
-  <ion-infinite-scroll
-    (ionInfinite)="loadMore($event)"
-    threshold="100px"
-  >
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" threshold="100px">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
       loadingText="Loading more data..."

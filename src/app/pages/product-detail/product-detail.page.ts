@@ -28,7 +28,7 @@ export class ProductDetailPage implements OnInit {
     // sets the code (just in case)
     this.productCode = this.route.snapshot.paramMap.get('id');
     let productCode: string = window.location.pathname.replace(
-      '/products/',
+      '/product/',
       ''
     );
     // let productCode: string = '3033710065066'; // ProductCode of Nesquik 250g

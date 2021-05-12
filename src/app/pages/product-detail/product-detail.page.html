@@ -1,9 +1,130 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>product-detail</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content *ngIf="isValid">
+  <!--  -->
+  <main class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+      <div class="col-md-6 px-0">
+        <h1 class="display-5 fst-italic">
+          {{ product.product_name_fr + " - " + product.brands + " - " + product.quantity}}
+        </h1>
+        <p class="lead my-3">Brands: {{ product.brands }}</p>
+        <p class="lead mb-0 text-white fw-bold">Code-barres: {{ product._id }}
+          (EAN / EAN-13)
+        </p>
+      </div>
+    </div>
 
-<ion-content>
+    <!-- Cards NutriScore & Product Image -->
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Nutri Score</strong>
+            <h3 class="mb-0">Nutri-Score <span style="text-transform: uppercase;">{{ product.nutriscore_grade }}</span>
+            </h3>
+            <!-- <div class="mb-1 text-muted">Nov 12</div> 
+            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to 
+              additional content.</p> 
+            <a href="#" class="stretched-link">Continue reading</a>  -->
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <ion-img [src]="images[0]" style="width: 200;"></ion-img>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Product</strong>
+            <h3 class="mb-0">{{product.product_name_fr}}</h3>
+            <div class="mb-1 text-muted">{{product.quantity}}</div>
+            <p class="mb-auto">{{product.generic_name}}</p>
+            <!-- <a href="#" class="stretched-link">Continue reading</a> -->
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <ion-img [src]="product.image_front_small_url"></ion-img>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- -- -- Cards NutriScore & Product Image -->
 
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h2 class="pb-4 mb-4 fst-italic border-bottom">
+          Caractéristiques du produit
+        </h2>
+
+        <article class="blog-post">
+          <h3 class="blog-post-title">Dénomination générique: </h3>
+          <p>{{product.generic_name}}</p>
+          <!-- Lines -->
+          <h4>Quantité: </h4>
+          <p>{{product.quantity}}</p>
+          <!--  -->
+          <h4>Labels, certifications, récompenses: </h4>
+          <p>{{product.labels}}</p>
+          <!--   -->
+          <h4>Origine des ingrédients : </h4>
+          <p>{{product.origins}}</p>
+          <!--  -->
+          <h4>Magasins: </h4>
+          <p>{{product.stores}}</p>
+          <!--  -->
+          <h4>Pays de vente: </h4>
+          <p>{{product.countries_beforescanbot}}</p>
+          <!--  -->
+          <h2>Ingrédients: </h2>
+          <p>→ Les ingrédients sont listés par ordre d'importance (quantité).</p>
+          <h4>Liste des ingrédients:</h4>
+          <ul>
+            <li *ngFor="let ingredient of product.ingredients">
+              {{ingredient.text}}
+              <span *ngIf="ingredient.percent">({{ingredient.percent}}%)</span>
+            </li>
+          </ul>
+          <!-- <p>{{product.ingredients_text}}</p> -->
+        </article>
+      </div>
+
+      <div class="col-md-4">
+        <div class="position-sticky" style="top: 2rem;">
+          <div class="p-4 mb-3 rounded">
+            <h4 class="fst-italic">êtes-vous en désaccord?</h4>
+            <p class="mb-0">Vous pouvez proposer tout changement suite au prochain site</p>
+          </div>
+
+          <div class="p-4">
+            <h4 class="fst-italic">recherchez votre intérêt ici</h4>
+            <ol class="list-unstyled mb-0">
+              <li>
+                <ion-text color="primary" (click)="redirectToEdit()">
+                  Données du produit
+                </ion-text>
+              </li>
+              <!-- <li><a href="#">Any thing else. (We won't answer, srry)</a></li> -->
+            </ol>
+          </div>
+
+          <div class="p-4">
+            <h4 class="fst-italic">Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</ion-content>
+
+<!-- In case of non existing element stored -->
+<ion-content *ngIf="!isValid" padding>
+  <ion-label>Désolé, nous n'avons trouvé aucun produit avec ce code-barres</ion-label>
+  <br>
+  <ion-button routerLink="" routerDirection="root">
+    retourner à l'accueil
+  </ion-button>
 </ion-content>

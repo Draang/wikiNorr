@@ -24,9 +24,9 @@ const routes: Routes = [
   {
     path: 'products/:marque',
     loadChildren: () =>
-    import('./pages/products/products.module').then(
-      (m) => m.ProductsPageModule
-    ),
+      import('./pages/products/products.module').then(
+        (m) => m.ProductsPageModule
+      ),
   },
   {
     path: 'marques',
@@ -35,23 +35,50 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () =>
+      import('./pages/register/register.module').then(
+        (m) => m.RegisterPageModule
+      ),
   },
   {
     path: 'forgot-password',
-    loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+    loadChildren: () =>
+      import('./pages/forgot-password/forgot-password.module').then(
+        (m) => m.ForgotPasswordPageModule
+      ),
   },
   {
     path: 'specificsearch',
-    loadChildren: () => import('./pages/specificsearch/specificsearch.module').then( m => m.SpecificsearchPageModule)
+    loadChildren: () =>
+      import('./pages/specificsearch/specificsearch.module').then(
+        (m) => m.SpecificsearchPageModule
+      ),
   },
   {
     path: 'verify-email',
-    loadChildren: () => import('./pages/verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
+    loadChildren: () =>
+      import('./pages/verify-email/verify-email.module').then(
+        (m) => m.VerifyEmailPageModule
+      ),
+  },
+  {
+    path: 'product-edit/:id',
+    loadChildren: () =>
+      import('./pages/product-edit/product-edit.module').then(
+        (m) => m.ProductEditPageModule
+      ),
+  },
+  {
+    path: 'view-editions',
+    loadChildren: () =>
+      import('./pages/view-editions/view-editions.module').then(
+        (m) => m.ViewEditionsPageModule
+      ),
   },
 ];
 

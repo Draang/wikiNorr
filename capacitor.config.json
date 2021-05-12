@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "norriture",
+  "appName": "wikiNorr",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

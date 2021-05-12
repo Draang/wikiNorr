@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-products',
   templateUrl: './products.page.html',
@@ -12,12 +12,14 @@ export class ProductsPage implements OnInit {
   page: number = 1;
   constructor(
     private aRouter: ActivatedRoute,
-    public productService: ProductService
+    public productService: ProductService,
+    private router: Router
   ) {
-    if(this.aRouter.snapshot.paramMap.get('marque')!=null){
-      this.searchTerm=this.aRouter.snapshot.paramMap.get('marque').replace(/-/g,' ');
+    if (this.aRouter.snapshot.paramMap.get('marque') != null) {
+      this.searchTerm = this.aRouter.snapshot.paramMap
+        .get('marque')
+        .replace(/-/g, ' ');
     }
-    
   }
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class ProductsPage implements OnInit {
   getDataProds() {
     this.productService.getDataProd(this.searchTerm).subscribe((r) => {
       this.results = r['products'];
+      console.log(this.results);
     });
   }
   loadMore(event) {
@@ -36,5 +39,10 @@ export class ProductsPage implements OnInit {
         this.results = r['products'];
       });
     event.target.complete();
+  }
+
+  redirectToProduct(id: string) {
+    console.log('id:' + id);
+    this.router.navigateByUrl('product/' + id);
   }
 }

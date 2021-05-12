@@ -1,10 +1,14 @@
 export const environment = {
-  production: true, firebase: {
-    apiKey: 'AIzaSyDOgYqBF-NH5OV-TbRb6ikeUEX27v5rnzY',
-    authDomain: 'wikinorr-81c85.firebaseapp.com',
-    projectId: 'wikinorr-81c85',
-    storageBucket: 'wikinorr-81c85.appspot.com',
-    messagingSenderId: '391651037423',
-    appId: '1:391651037423:web:e6b1f84f6ef991870a8b1a',
+  production: true,
+  firebaseConfig: {
+    apiKey: 'AIzaSyDGMgqzIICqWhE2_4OER9XH0ae-2k722eU',
+    authDomain: 'wikinorr-64759.firebaseapp.com',
+    databaseURL:
+      'https://wikinorr-64759-default-rtdb.europe-west1.firebasedatabase.app',
+    projectId: 'wikinorr-64759',
+    storageBucket: 'wikinorr-64759.appspot.com',
+    messagingSenderId: '383890183673',
+    appId: '1:383890183673:web:858194f3f7628bb2eed928',
+    measurementId: 'G-6G9ZJBN2DZ',
   },
 };

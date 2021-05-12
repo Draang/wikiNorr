@@ -1,35 +1,29 @@
 <ion-header>
   <ion-toolbar>
-   
+
     <ion-title>products</ion-title>
   </ion-toolbar>
-  <ion-searchbar
-    [(ngModel)]="searchTerm"
-    (ionChange)="getDataProds($event)"
-  ></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getDataProds($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content>
   <!--  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged()"></ion-searchbar> -->
 
   <ion-card *ngFor="let item of results">
-    <ion-card-content
-      ><ion-avatar slot="start"
-        ><ion-img [src]="item.image_front_thumb_url"></ion-img
-      ></ion-avatar>
+    <ion-card-content>
+      <ion-avatar slot="start">
+        <ion-img [src]="item.image_front_thumb_url"></ion-img>
+      </ion-avatar>
     </ion-card-content>
 
-    <ion-card-header
-      ><ion-card-title
-        >{{item.product_name?item.product_name:item.product_name_fr}}</ion-card-title
-      ></ion-card-header
-    >
+    <ion-card-header>
+      <ion-card-title (click)="redirectToProduct(item._id)">
+        {{item.product_name?item.product_name:item.product_name_fr}}
+      </ion-card-title>
+    </ion-card-header>
   </ion-card>
-  <ion-infinite-scroll (ionInfinite)="loadMore($event)" threshold="100px">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="Loading more data..."
-    >
+  <ion-infinite-scroll (ionInfinite)=" loadMore($event)" threshold="100px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

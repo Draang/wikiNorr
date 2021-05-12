@@ -20,8 +20,6 @@ export class AppComponent {
       this.user = JSON.parse(localStorage.getItem('user')).email;
       return false;
     } else if (JSON.parse(localStorage.getItem('user')) == null) {
-      
-      
       return true;
     }
   }

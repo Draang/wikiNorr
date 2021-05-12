@@ -1,0 +1,26 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>viewEditions</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Code-barres:</th>
+        <th scope="col">Dénomination générique</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Nutri Score</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="isValid">
+      <tr *ngFor="let item of items">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.denomination}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.nutriscore}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

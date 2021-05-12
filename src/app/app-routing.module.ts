@@ -53,6 +53,21 @@ const routes: Routes = [
     path: 'verify-email',
     loadChildren: () => import('./pages/verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
   },
+
+    {
+      path: 'product-edit/:id',
+    loadChildren: () =>
+      import('./pages/product-edit/product-edit.module').then(
+        (m) => m.ProductEditPageModule
+      ),
+  },
+  {
+    path: 'view-editions',
+    loadChildren: () =>
+      import('./pages/view-editions/view-editions.module').then(
+        (m) => m.ViewEditionsPageModule
+      ),
+  },
 ];
 
 @NgModule({

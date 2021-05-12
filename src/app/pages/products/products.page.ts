@@ -29,12 +29,10 @@ export class ProductsPage implements OnInit {
     });
   }
   loadMore(event) {
-    this.page = this.page + 1;
-    this.productService
-      .getDataProd(this.searchTerm, this.page)
-      .subscribe((r) => {
-        this.results = r['products'];
-      });
+    this.page=this.page+1;
+    this.productService.getDataProd(this.searchTerm,this.page).subscribe((r) => {
+      this.results = r['products'];
+    });
     event.target.complete();
   }
 }

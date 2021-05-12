@@ -25,7 +25,10 @@
       ></ion-card-header
     >
   </ion-card>
-  <ion-infinite-scroll (ionInfinite)="loadMore($event)" threshold="100px">
+  <ion-infinite-scroll
+    (ionInfinite)="loadMore($event)"
+    threshold="100px"
+  >
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
       loadingText="Loading more data..."

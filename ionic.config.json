@@ -1,0 +1,7 @@
+{
+  "name": "wikiNorr",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
